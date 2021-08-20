@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/bootstrap-slider.css">
+  <link rel="stylesheet" href="css/bootstrap-select.min.css">
+  <title>Quickly create your home inspection price</title>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/jspdf.debug.js"></script>
+  <script src="js/jspdf.plugin.autotable.min.js"></script>
+  <script src="js/scroll.js"></script>
+  
+  
+  
+  <script src="./js/autoNumeric.js"></script>
+  <script src="js/bootstrap-slider.min.js"></script>
+  <script type="text/javascript" src="js/jspdf.debug.js"></script>
+  <!-- Latest compiled and minified CSS -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+
+<script>
+
+  $(document).ready(function () {
+    //$('.auto').autoNumeric('init');
+    $('.selectpicker').selectpicker();
+    $("#standard").focus();
+    selectedVal();
+   
+    $('input.example').on('change', function() {
+    $('input.example').not(this).prop('checked', false);  
+});;     
+  })
+presentYr=new Date().getFullYear();
+</script>
+ 
+</head>
+
+<body >
+
+  <div class="container mt-3">
+    <div class="row text-center" style="padding-top:2rem">
+      <div class="col">
+        <h1>Quickly create your home inspection price</h1>
+        <br>
+        
+        
+      </div>
+    </div>
+    
+    <div class="row" style="padding-top:1rem">
+      <div class="col">
+        <h3>Receive a $50 discount by selecting any of the following professions</h3>
+        
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+         
+          <select id="sclt1" title="Select"  onchange="calculated_value()" class="selectpicker form-control" >
+            <option value="a" selected>None </option>
+            <option value="b">Teacher</option>
+            <option value="c">Healthcare Pro</option>
+            <option value="d">Fire Fighter</option>
+            <option value="e">Law Enforcement</option>
+            <option value="f">Military</option>
+            
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+         
+          <input type="text" class="form-control" id="others" placeholder="Enter Your profession">
+        </div>
+      </div>
+    </div>
+   
+    
+    <div class="row" style="padding-top:2rem">
+      <div class="col">
+        <h3>Type Of Inspection</h3>
+       
+       
+      </div>
+    </div>
+   
+<div class="row" style="padding-top:1rem">
+  <div class="col">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="standard"
+     onclick="clickButton(this);calculated_value();">Standard Residential Inspection</button>
+    
+    
+  </div>
+</div>
+    
+<div class="row" style="padding-top:1rem">
+  <div class="col">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="home" onclick="clickButton(this);calculated_value();">Home Maintainence Inspection</button>
+  
+  </div>
+</div>
+<div class="row" style="padding-top:1rem">
+  <div class="col">
+    
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="pre" onclick="clickButton(this);calculated_value();">Pre-Delivery Inspection</button>
+  
+  </div>
+</div>
+<div class="row" style="padding-top:1rem">
+  <div class="col">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="month" onclick="clickButton(this);calculated_value()">11 Month Warranty Inspection</button>
+  </div>
+</div>
+<div class="row" style="margin-top:3rem" >
+  <div class="col">
+    <label><h3>Size Of Home</h3> </label>
+  </div>
+</div>
+    <div class="row"  >
+      <div class="col-md-6">
+        <div class="form-group">
+          
+          <input id="ex22" type="text"
+          data-slider-id="slider22"
+          data-slider-min="0"
+          data-slider-max="7000"
+          data-slider-step="1"
+          data-slider-value="1301"
+          data-slider-handle="square"
+          onchange="calculated_value();"
+           />
+         </div>
+         
+      </div>
+      <div class="col-md-6">
+        <span id="homeSize" style="color:#FF0000;font-weight:bold;font-size: 27px;"></span> 
+      </div>
+    </div>
+
+  
+    <div class="row">
+      <div class="col-sm-9">
+       <br>
+          <label><h3>House Style</h3> <br></label>
+          
+        
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-8">
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="style_home" class="custom-control-input" onclick="calculated_value();" value="single" checked>
+          <label class="custom-control-label" for="customRadio1"> Single Family Home</label>
+        </div><br>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="style_home" value="condo" onclick="calculated_value();" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio2">Condo/Townhouse</label>
+        </div><br>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="style_home" value="multiplex" onclick="calculated_value();" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio3">Multiplex ( 4 units max )</label>
+        </div>
+      </div>
+    </div>
+  <div class="row"
+  style="margin-top:3rem" >
+    <div class="col-md-9">
+      <label><h3>Age Of Home</h3> </label>
+    </div>
+  </div>
+    <div class="row"  >
+      <div class="col-md-6">
+        <div class="form-group">
+         
+          <input id="ex33" type="text"
+          style="width:100%"
+          data-slider-id="slider33"
+          data-slider-min="1891"
+       
+          data-slider-step="1"
+          data-slider-value="1940"
+          data-slider-handle="square"
+          onchange="calculated_value();"
+           />
+         </div>
+         
+      </div>
+      <div class="col-md-6">
+        <span id="homeAge" style="color:#FF0000;font-weight:bold;font-size: 27px;"></span> 
+      </div>
+    </div>
+    <div class="row text-right">
+      <div class="col-md-9">
+        <span id="homeAge" style="color:#FF0000;font-weight:bold;font-size: 27px;"></span> 
+      </div>
+    </div>
+    <div class="row" style="margin-top:1rem"  >
+      <div class="col">
+        <label><h3>Add On Services</h3> </label>
+      </div>
+    </div>
+    <div class="row" style="margin-top:1rem"  >
+      <div class="col">
+        
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" onclick="calculated_value();" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+             CP( Complete protection 120 day home warranty.  )  $45<br>
+             <span style="margin-left: 3rem;">(Discover the benefits)</span> 
+            </label>
+          </div>
+          
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" onclick="calculated_value();" id="defaultCheck2" d>
+            <label class="form-check-label" for="defaultCheck2">
+             Sewer line inspections ( Coming Soon )  $225
+            </label>
+          </div>
+       
+         
+      </div>
+    </div>
+    
+<div class="row" style="margin-top:1rem">
+  <div class="col">
+    <label >
+      <h3>Packages</h3>
+     </label>
+  </div>
+</div>
+<div class="row">
+  <div class="col" style="border:2px solid blue;margin-left: 4px;"> 
+    <div class="form-check">
+      <input class="form-check-input example" type="checkbox"   value="" id="defaultCheck3">
+      <label class="form-check-label" for="defaultCheck1">Great Package <span 
+        style="color:blue;font-weight:bold;font-size: 18px;" id="pkj1">xcv </span>
+      </label>
+      <ul>
+        <li>Photorich reports in 48 hours.</li>
+        <li>Drone pilot service.</li>
+        <li>Lifetime digital home binder.</li>
+        <li>Lifetime appliance recall verification.</li>
+        <li class="cp">CP Warranty</li>
+        <li class="sewer">Sewer line inspection</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col" style="border:2px solid blue;margin-right: 4px;margin-left: 1px"> 
+    <div class="form-check">
+      <input class="form-check-input example" type="checkbox"  value="" id="defaultCheck4">
+      <label class="form-check-label" for="defaultCheck1">Awesome Package<span 
+        style="color:blue;font-weight:bold;font-size: 18px;" id="pkj2">xcv </span>
+      </label>
+      <ul>
+        <li>Photorich reports in 24 hours.</li>
+        <li>Drone pilot service.</li>
+        <li>Lifetime digital home binder.</li>
+        <li>Lifetime appliance recall verification.</li>
+        <li>Additional services selected.</li>
+        <li>Price repairer report.</li>
+        <li>BuildFax report.</li>
+        <li>Infrared thermal analysis.</li>
+        <li class="cp">CP Warranty</li>
+        <li class="sewer">Sewer line inspection</li>
+    
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 1rem;">
+  <div class="col">
+<button class="btn btn-danger" onclick="create_pdf()">Print Quote</button>  <button type="button" class="btn btn-warning" data-toggle="modal" 
+data-target="#exampleModal2" id="sendEmail" 
+>Email Quote</button>
+  </div>
+  <div class="col">
+    
+  </div>
+</div>
+  </div>
+
+ <!-- Button trigger modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="madalBody"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--    second slider            -->
+
+<!--modal2-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Email Quote</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <style>
+        
+          #frmContact {border-top:#F0F0F0 2px solid;background:#FAF8F8;padding:10px;}
+          #frmContact div{margin-bottom: 15px}
+          #frmContact div label{margin-left: 5px}
+          .demoInputBox{padding:10px; border:#F0F0F0 1px solid; border-radius:4px;}
+          .error{background-color: #FF6600;border:#AA4502 1px solid;padding: 5px 10px;color: #FFFFFF;border-radius:4px;}
+          .success{background-color: #12CC1A;border:#0FA015 1px solid;padding: 5px 10px;color: #FFFFFF;border-radius:4px;}
+          .info{font-size:.8em;color: #FF6600;letter-spacing:2px;padding-left:5px;}
+          .btnAction{background-color:#2FC332;border:0;padding:10px 40px;color:#FFF;border:#F0F0F0 1px solid; border-radius:4px;}
+          </style>
+          
+          <script>
+           function sendContact() {
+      calculated_value();
+      if (clickedId=="standard")
+      {        type_selection="Standard Residential Inspection";
+
+      }
+      else if (clickedId=="home")
+      {        type_selection="Home Maintainance Inspection";
+
+      }
+      else if (clickedId=="pre")
+      {        type_selection="Pre delivery Inspection";
+
+      }
+      else 
+      {        type_selection="Month Warranty Inspection";
+
+      }
+      
+      if(radioValue=="single"){
+        radtxt="Single Family Home" ;
+      }
+      else  if(radioValue=="condo"){
+        radtxt="Condo/Townhouse" ;
+      }
+      else {
+        radtxt="Multiplex ( 4 units max )" ;
+      }
+      var valid;	
+      valid = validateContact();
+     
+      $("#mail-status").html("Please Wait...");
+      if(valid) {
+     alert(radtxt);
+      $.post("mail/send.php",
+      {
+        "userEmail": "bhawnathakur2@gmail.com",
+        "profession":$( "#sclt1 option:selected" ).text(),
+        "inspectionType":type_selection,
+        "homeSize": sldVal.toString(),
+        "homeStyle": radtxt,
+        "homeAge": ageVal.toString(),
+        "total": (totVal+addMore).toString(),
+        "greatPackage": (base_price).toString(),
+        "awesomePackage":  (base_price+80).toString()
+  
+      },
+      function(data,status){
+        if(data=="emailSent"){
+          
+          $("#mail-status").html("Email Sent");
+        }
+     
+    });
+       
+      }
+    }
+    
+    function validateContact() {
+      var valid = true;	
+      $(".demoInputBox").css('background-color','');
+      $(".info").html('');
+      
+      
+      if(!$("#userEmail").val()) {
+        $("#userEmail-info").html("(required)");
+        $("#userEmail").css('background-color','#FFFFDF');
+        valid = false;
+      }
+      if(!$("#userEmail").val().match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
+        $("#userEmail-info").html("(invalid)");
+        $("#userEmail").css('background-color','#FFFFDF');
+        valid = false;
+      }
+      
+      
+      return valid;
+    }
+          </script>
+          <div id="frmContact">
+          <div id="mail-status"></div>
+         
+          <div>
+          <label>Email</label>
+          <span id="userEmail-info" class="info"></span><br/>
+          <input type="text" name="userEmail" id="userEmail" class="demoInputBox">
+          </div>
+          
+          <button name="submit" style="cursor:pointer;" class="btnAction" onClick="sendContact();">Send</button>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+           
+          </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+  <script>
+var sldVal=1301;
+$('#ex1').slider({
+	
+});
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+function selectedVal(){
+  if($( "#sclt1 option:selected" ).text()=="Others")
+  {
+  $('#others').css('display','block',) ;
+}
+else{
+  $('#others').css('display','none') ;
+}
+$('#exampleModalLabel').text($( "#slct1 option:selected" ).text());
+$('#sp').text(sldVal) ;
+}
+$('#ex22').slider({
+  formatter: function(value) {
+    sldVal=value;
+    if(sldVal<1301){
+      $('#homeSize').text('( ' +'0-1300' +' )') ;
+    }
+    else  if(sldVal>1300 && sldVal<1801 ){
+      $('#homeSize').text('( ' +'1301-1800'+' )') ;
+    }
+    else  if(sldVal>1800 && sldVal<2501 ){
+      $('#homeSize').text('( ' +'1801-2500' +' )') ;
+    }
+    else  if(sldVal>2500 && sldVal<3501 ){
+      $('#homeSize').text('( ' +'2501-3500' +' )') ;
+    }
+    else  if(sldVal>3500 && sldVal<4501 ){
+      $('#homeSize').text('( ' +'3501-4500' +' )') ;
+    }
+    else{
+      $('#homeSize').text('( ' +'4501-7000' +' )') ; 
+    }
+    
+	return  value;
+    
+	},
+    id: 'slider22',
+    min: 0,
+    max: 7000,
+    step: 1,
+    value: 1301,
+    rangeHighlights: [{ "start": 0, "end": 1300, "class": "category1" },
+                      { "start": 1300, "end": 1800, "class": "category2" },
+                      { "start": 1800, "end": 2500 , "class": "category3" },
+                      { "start": 2500, "end": 3500 , "class": "category4" },
+                      { "start": 3500, "end": 4500 , "class": "category5" },
+                      { "start": 4500, "end":7000 , "class": "category6" } ]});
+var clickedId="standard";
+var typeHeading;
+var typeText ;
+$('#exampleModalLabel').text="typeHeading;"
+function clickButton(evt){
+  
+  
+  clickedId=evt.id;
+
+  if(clickedId=="standard"){
+typeHeading="Standard Residential Inspection";
+typeText="Standard residential inspection comprises following facilities:";
+typeText+= "<ul>";
+ 
+  typeText+=   "<li> A home inspector will look at a house’s HVAC system, interior plumbing and electrical systems, roof, attic, floors. windows and doors, foundation, basement and structural components, then provide a written report with results.</li>" ; 
+  typeText+=   "<li> A home inspection generally takes two to four hours, but may take more time depending on the size of the house.</li>" ;
+  typeText+=   "<li> Attend the inspection so you can explore your new home in detail and ask questions as you go. This process can give you much more informative than the report alone.</li>" ;
+
+}
+else if(clickedId=="home"){
+  typeHeading="Home Mainainence Inspection";
+  typeText="A home maintenance inspection will clear up any concerns you have about the health of your house. Worried your roof has been compromised, or your foundation is a little worse for wear? A home maintenance inspection gives you a full picture of any below-the-radar repairs that need to be completed before you put your home up for sale.Just like at a pre-purchase inspection, your inspector will walk you through the home, showing you what was found and explaining what it means. You should have a chance to ask questions or get clarifications, and usually the inspector will point out things you should be doing regularly to keep all of your home's systems functioning in tiptop shape."
+}
+else if(clickedId=="pre"){
+  typeHeading="Pre-Delivery Inspection";
+  typeText="The pre-delivery inspection This renovation is generally applied to newly built homes, is a real estate term that means the buyer has the option (or requirement, depending upon how the real estate contract is written) to inspect the property prior to closing or settlement. These inspections generally take place up to a week before a closing, and they generally allow buyers the first opportunity to inspect their new home. Additionally, the inspection is to ensure that all terms of the contract have been met, that the home is substantially completed, and that major items are in working order. ";
+}
+else {
+  typeHeading="11 Month Warranty Inspection";
+  typeText="New home buyers may not realize the importance of a builder warranty inspection. Or, if they already have a warranty that the warranty will usually expire within the first year after closing. Getting your home warranty inspection at the end of the one year expiration is your final opportunity to identify and inform your builder of any items that need to be repaired or replaced. The primary goal is to provide a thorough inspection along with a detailed report that will list items that are safety hazards or items that are not performing or operating property. A licensed home inspection company such as Aardvark Home Inspectors will check all the house systems including:•Inspections Shots• Heating & Central Air Conditioning Systems"
+  
+  typeText+= "<ul>";
+  
+  typeText+=   "<li> Plumbing Connections & Fittings• Electrical Outlets, Wiring & Panels</li>" ;
+  typeText+=   "<li> Lighting</li>" ;
+  typeText+=   "<li> Attic</li>" ;
+  typeText+=   "<li> Insulation" ;
+  typeText+=   "<li> Floors</li>" ;
+  typeText+=   "<li> Windows & Doors" ;
+  typeText+=   "<li> Drywall, Walls & Ceilings</li>" ;
+  typeText+=   "<li> Fireplace & Chimneys" ;
+  typeText+=   "<li> Roofing</li>" ;
+  typeText+=   "<li> Gutters & Downspouts</li>" ;
+  typeText+=   "<li> Foundation</li>" ;
+  typeText+=   "<li> Drainage</li>" ;
+  typeText+=   "<li> Decks & Wood Structures</li>" ;
+  typeText+=   "<li> Appliances</li></ul>" ;
+
+}
+
+$('#exampleModalLabel').text(typeHeading);
+$('#madalBody').html(typeText);
+
+}     
+
+var ageVal ;
+
+$('#ex33').slider({
+  formatter: function(value) {
+    ageVal=value;
+    if(ageVal<1926){
+    $('#homeAge').text('( ' +'1890-1926' +' )') ;
+  }
+  
+  else  if(ageVal>1925 && ageVal<1961){
+    $('#homeAge').text('( ' +'1925-1960' +' )') ;
+  }
+ 
+  else{
+    $('#homeAge').text('( ' +'1961-present' +' )') ; 
+  }
+  
+	return  value;
+    
+	},
+    id: 'slider33',
+    min: 1891,
+    max: new Date().getFullYear(),
+    step: 1,
+    value:1940,
+    rangeHighlights: [{ "start": 1891, "end": 1925, "class": "category1" },
+                      { "start": 1925, "end": 1960, "class": "category2" },
+                      { "start": 1960, "end":new Date().getFullYear() , "class": "category3" }
+                      ]});
+  </script>
+  <script src="js/cal.js"></script>
+   
+</body>
+
+</html>
